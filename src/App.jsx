@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Global = createGlobalStyle`
   body {
     margin: 0;
@@ -52,7 +52,7 @@ const Node = styled.div`
 `;
 function App() {
   const [isDark, setIsDark] = useState(false);
-  const [minutes, setMinutes] = useState([
+  const [hours, setHours] = useState([
     false,
     false,
     false,
@@ -60,7 +60,7 @@ function App() {
     false,
     false,
   ]);
-  const [hours, setHours] = useState([
+  const [minutes, setMinutes] = useState([
     false,
     false,
     false,
@@ -76,7 +76,34 @@ function App() {
     false,
     false,
   ]);
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      var date = new Date();
+      var hours = date.getHours().toString(2);
+      var minutes = date.getMinutes().toString(2);
+      var seconds = date.getSeconds().toString(2);
+      setHours(
+        hours
+          .padStart(6, "0")
+          .split("")
+          .map((x) => x === "1")
+      );
+      setMinutes(
+        minutes
+          .padStart(6, "0")
+          .split("")
+          .map((x) => x === "1")
+      );
+      setSeconds(
+        seconds
+          .padStart(6, "0")
+          .split("")
+          .map((x) => x === "1")
+      );
+      console.log(hours, minutes, seconds);
+    }, 1000);
+    return () => clearInterval(interval);
+  });
   return (
     <div>
       <Global isDark={isDark} />
