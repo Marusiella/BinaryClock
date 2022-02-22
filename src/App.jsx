@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { useEffect, useState } from "react";
 const Global = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
   body {
     margin: 0;
     padding: 0;
@@ -59,6 +60,13 @@ const Node = styled.div`
   border-radius: 50%;
   border: 2px dashed ${(props) => (!props.isDark ? "#ECEFF4" : "#212223")};
 `;
+
+const Text = styled.div`
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-weight: bold;`;
+
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [hours, setHours] = useState([
@@ -129,21 +137,30 @@ function App() {
           </Sun>
         </Navbar>
         <ClockContainer isDark={isDark}>
+          <div>
           <Clocks isDark={isDark} number={1}>
             {hours.map((hour, index) => (
               <Node key={index} isDark={isDark} active={hour}></Node>
             ))}
           </Clocks>
+          <Text>Hours</Text>
+          </div>
+          <div>
           <Clocks isDark={isDark} number={2}>
             {minutes.map((minute, index) => (
               <Node key={index} isDark={isDark} active={minute}></Node>
             ))}
           </Clocks>
+          <Text>Minutes</Text>
+          </div>
+          <div>
           <Clocks isDark={isDark} number={3}>
             {seconds.map((second, index) => (
               <Node key={index} isDark={isDark} active={second}></Node>
             ))}
           </Clocks>
+          <Text>Seconds</Text>
+          </div>
         </ClockContainer>
       </MainContainer>
     </div>
