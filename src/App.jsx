@@ -32,6 +32,9 @@ const ClockContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:nth-child(1) {
+    border: 1px solid #3300;
+  }
 `;
 const Clocks = styled.div`
   width: calc(100% / 3);
@@ -40,6 +43,7 @@ const Clocks = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 `;
 const Node = styled.div`
   width: 50px;
@@ -92,17 +96,17 @@ function App() {
           </Sun>
         </Navbar>
         <ClockContainer isDark={isDark}>
-          <Clocks isDark={isDark}>
+          <Clocks isDark={isDark} number={1}>
             {hours.map((hour, index) => (
               <Node key={index} isDark={isDark} active={hour}></Node>
             ))}
           </Clocks>
-          <Clocks isDark={isDark}>
+          <Clocks isDark={isDark} number={2}>
             {minutes.map((minute, index) => (
               <Node key={index} isDark={isDark} active={minute}></Node>
             ))}
           </Clocks>
-          <Clocks isDark={isDark}>
+          <Clocks isDark={isDark} number={3}>
             {seconds.map((second, index) => (
               <Node key={index} isDark={isDark} active={second}></Node>
             ))}
