@@ -56,19 +56,20 @@ const Node = styled.div`
   width: 50px;
   height: 50px;
   background-color: ${(props) =>
-    props.active ? "#2F3C7E" : !props.isDark ? "#212223" : "#ECEFF4"};
+    props.active ? "#F5FF19" : !props.isDark ? "#393939" : "#ECEFF4"};
   border-radius: 50%;
-  border: 2px dashed ${(props) => (!props.isDark ? "#ECEFF4" : "#212223")};
+  border: 2px dashed #212223;
 `;
 
 const Text = styled.div`
   font-size: 30px;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  font-weight: bold;`;
+  font-weight: bold;
+  color: ${(props) => (props.isDark ? "white" : "#212223")};`;
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [hours, setHours] = useState([
     false,
     false,
@@ -143,7 +144,7 @@ function App() {
               <Node key={index} isDark={isDark} active={hour}></Node>
             ))}
           </Clocks>
-          <Text>Hours</Text>
+          <Text isDark={isDark}>Hours</Text>
           </div>
           <div>
           <Clocks isDark={isDark} number={2}>
@@ -151,7 +152,7 @@ function App() {
               <Node key={index} isDark={isDark} active={minute}></Node>
             ))}
           </Clocks>
-          <Text>Minutes</Text>
+          <Text isDark={isDark}>Minutes</Text>
           </div>
           <div>
           <Clocks isDark={isDark} number={3}>
@@ -159,7 +160,7 @@ function App() {
               <Node key={index} isDark={isDark} active={second}></Node>
             ))}
           </Clocks>
-          <Text>Seconds</Text>
+          <Text isDark={isDark}>Seconds</Text>
           </div>
         </ClockContainer>
       </MainContainer>
