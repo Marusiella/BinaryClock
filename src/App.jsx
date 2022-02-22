@@ -30,14 +30,11 @@ const ClockContainer = styled.div`
   height: 80%;
   margin: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  &:nth-child(1) {
-    border: 1px solid #3300;
-  }
 `;
 const Clocks = styled.div`
-  width: calc(100% / 3);
+  width: 150px;
   height: 180px;
   display: flex;
   flex-direction: column;
