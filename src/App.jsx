@@ -32,6 +32,15 @@ const ClockContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
 `;
 const Clocks = styled.div`
   width: 150px;
