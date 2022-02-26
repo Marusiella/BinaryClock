@@ -1,11 +1,12 @@
-import styled, { createGlobalStyle } from "styled-components";
-import { useEffect, useState } from "react";
+import styled, { createGlobalStyle } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+
 const Global = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
   body {
     margin: 0;
     padding: 0;
-    background-color: ${(props) => (props.isDark ? "#212223" : "#ECEFF4")};
+    background-color: ${(props) => (props.isDark ? '#212223' : '#ECEFF4')};
   }`;
 
 const MainContainer = styled.div`
@@ -20,9 +21,9 @@ const Navbar = styled.div`
   align-items: center;
 `;
 const Sun = styled.button`
-  color: ${(props) => (props.isDark ? "#ECEFF4" : "#212223")};
+  color: ${(props) => (props.isDark ? '#ECEFF4' : '#212223')};
   font-size: 50px;
-  margin-right: ${(props) => (props.isDark ? "10px" : "17px")};
+  margin-right: ${(props) => (props.isDark ? '10px' : '17px')};
   border: none;
   background-color: transparent;
 `;
@@ -55,8 +56,7 @@ const Clocks = styled.div`
 const Node = styled.div`
   width: 50px;
   height: 50px;
-  background-color: ${(props) =>
-    props.active ? "#F5FF19" : !props.isDark ? "#393939" : "#ECEFF4"};
+  background-color: ${(props) => (props.active ? '#F5FF19' : !props.isDark ? '#393939' : '#ECEFF4')};
   border-radius: 50%;
   border: 2px dashed #212223;
 `;
@@ -66,7 +66,7 @@ const Text = styled.div`
   font-family: "Roboto", sans-serif;
   text-align: center;
   font-weight: bold;
-  color: ${(props) => (props.isDark ? "white" : "#212223")};`;
+  color: ${(props) => (props.isDark ? 'white' : '#212223')};`;
 
 function App() {
   const [isDark, setIsDark] = useState(true);
@@ -96,29 +96,29 @@ function App() {
   ]);
   useEffect(() => {
     const interval = setInterval(() => {
-      var date = new Date();
-      var hours = date.getHours().toString(2);
-      var minutes = date.getMinutes().toString(2);
-      var seconds = date.getSeconds().toString(2);
+      const date = new Date();
+      const hoursBits = date.getHours().toString(2);
+      const minutesBits = date.getMinutes().toString(2);
+      const secondsBits = date.getSeconds().toString(2);
       setHours(
-        hours
-          .padStart(6, "0")
-          .split("")
-          .map((x) => x === "1")
+        hoursBits
+          .padStart(6, '0')
+          .split('')
+          .map((x) => x === '1'),
       );
       setMinutes(
-        minutes
-          .padStart(6, "0")
-          .split("")
-          .map((x) => x === "1")
+        minutesBits
+          .padStart(6, '0')
+          .split('')
+          .map((x) => x === '1'),
       );
       setSeconds(
-        seconds
-          .padStart(6, "0")
-          .split("")
-          .map((x) => x === "1")
+        secondsBits
+          .padStart(6, '0')
+          .split('')
+          .map((x) => x === '1'),
       );
-      console.log(hours, minutes, seconds);
+      // console.log(hoursBits, minutesBits, secondsBits);
     }, 1000);
     return () => clearInterval(interval);
   });
@@ -131,36 +131,36 @@ function App() {
             isDark={isDark}
             onClick={() => {
               setIsDark(!isDark);
-              console.log(isDark);
+              // console.log(isDark);
             }}
           >
-            {!isDark ? "☾" : "☼"}
+            {!isDark ? '☾' : '☼'}
           </Sun>
         </Navbar>
         <ClockContainer isDark={isDark}>
           <div>
-          <Clocks isDark={isDark} number={1}>
-            {hours.map((hour, index) => (
-              <Node key={index} isDark={isDark} active={hour}></Node>
-            ))}
-          </Clocks>
-          <Text isDark={isDark}>Hours</Text>
+            <Clocks isDark={isDark} number={1}>
+              {hours.map((hour, index) => (
+                <Node key={index} isDark={isDark} active={hour} />
+              ))}
+            </Clocks>
+            <Text isDark={isDark}>Hours</Text>
           </div>
           <div>
-          <Clocks isDark={isDark} number={2}>
-            {minutes.map((minute, index) => (
-              <Node key={index} isDark={isDark} active={minute}></Node>
-            ))}
-          </Clocks>
-          <Text isDark={isDark}>Minutes</Text>
+            <Clocks isDark={isDark} number={2}>
+              {minutes.map((minute, index) => (
+                <Node key={index} isDark={isDark} active={minute} />
+              ))}
+            </Clocks>
+            <Text isDark={isDark}>Minutes</Text>
           </div>
           <div>
-          <Clocks isDark={isDark} number={3}>
-            {seconds.map((second, index) => (
-              <Node key={index} isDark={isDark} active={second}></Node>
-            ))}
-          </Clocks>
-          <Text isDark={isDark}>Seconds</Text>
+            <Clocks isDark={isDark} number={3}>
+              {seconds.map((second, index) => (
+                <Node key={index} isDark={isDark} active={second} />
+              ))}
+            </Clocks>
+            <Text isDark={isDark}>Seconds</Text>
           </div>
         </ClockContainer>
       </MainContainer>
