@@ -7,7 +7,7 @@ const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: ${(props) => (props.isDark ? "#212223" : "#ECEFF4")};
-    transition: background-color 0.5s ease;
+    transition: background-color 0.2s ease;
   }`;
 
 const MainContainer = styled.div`
@@ -73,6 +73,7 @@ const Text = styled.div`
   font-family: "Roboto", sans-serif;
   text-align: center;
   font-weight: bold;
+  transition: all 0.15s ease-in-out;
   color: ${(props) => (props.isDark ? "white" : "#3D4D52")};
 `;
 
