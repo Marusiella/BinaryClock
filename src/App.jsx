@@ -7,6 +7,7 @@ const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: ${(props) => (props.isDark ? "#212223" : "#ECEFF4")};
+    transition: background-color 0.5s ease;
   }`;
 
 const MainContainer = styled.div`
